@@ -1,6 +1,7 @@
 .add-style {
   display: flex;
   justify-content: center;
+  margin: 50px;
 }
 
 .header-style {
