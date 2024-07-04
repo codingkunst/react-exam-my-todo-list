@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from 'react';
 
 function App() {
+  let [todo, setTodo] = useState([{id: 1, content: 'React를 배워봅시다'}]);
+  let [content, setContent] = useState('');
+
+  function changeHandler (event) {
+    setContent(event.target.value)
+  }
+
+  function addHandler () {
+    const newTodo = {
+      id: todo.length + 1,
+      content: content,
+    };
+    
+    setTodo([...todo, newTodo]);
+    setContent('');
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="add-style">
+        <input value={content} onChange={changeHandler} />
+        <button onClick={addHandler}>추가하기</button>
+      </div>
+
+      <h1 className="header-style">To Do List</h1>
+
+      <div className="todo-area-style">
+        {todo.map(function (item) {
+          return <div className="todo-style" key={item.id}>{item.content}</div>
+          })
+        }
+      </div>
+
     </div>
   );
 }
