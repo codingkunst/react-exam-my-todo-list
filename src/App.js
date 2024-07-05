@@ -9,6 +9,7 @@ function App() {
     setContent(event.target.value)
   }
 
+  // Todo 추가하기
   function addHandler () {
     const newTodo = {
       id: todo.length + 1,
